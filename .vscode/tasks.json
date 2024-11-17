@@ -3,7 +3,11 @@
         {
             "type": "cppbuild",
             "label": "C/C++: gcc.exe 生成活动文件",
+<<<<<<< HEAD
             "command": "C:\\MinGW\\bin\\gcc.exe",
+=======
+            "command": "D:\\code\\mingw\\mingw64\\bin\\gcc.exe",
+>>>>>>> 13938b88e87b79d62507f09ed6d4bf93c59e2276
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
@@ -12,7 +16,11 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
+<<<<<<< HEAD
                 "cwd": "C:\\MinGW\\bin"
+=======
+                "cwd": "${fileDirname}"
+>>>>>>> 13938b88e87b79d62507f09ed6d4bf93c59e2276
             },
             "problemMatcher": [
                 "$gcc"
