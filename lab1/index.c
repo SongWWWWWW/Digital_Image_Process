@@ -1,37 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#pragma pack(push, 1) // 防止编译器对结构体进行字节对齐
+#pragma pack(push, 1) // 防止编译器对结构体进行字节对�?
 
-// BMP文件头结构
+// BMP文件头结�?
 typedef struct
 {
-    unsigned short bfType;      // 文件类型，必须为"BM"（0x4D42）
+    unsigned short bfType;      // 文件类型，必须为"BM"�?0x4D42�?
     unsigned int bfSize;        // 文件大小
     unsigned short bfReserved1; // 保留，必须设置为0
     unsigned short bfReserved2; // 保留，必须设置为0
     unsigned int bfOffBits;     // 图像数据的偏移量
 } BMPFileHeader;
 
-// BMP信息头结构
+// BMP信息头结�?
 typedef struct
 {
-    unsigned int biSize;         // 信息头大小
+    unsigned int biSize;         // 信息头大�?
     int biWidth;                 // 图像宽度
     int biHeight;                // 图像高度
-    unsigned short biPlanes;     // 颜色平面数，必须为1
-    unsigned short biBitCount;   // 每像素位数（24位代表RGB）
-    unsigned int biCompression;  // 压缩类型（0表示不压缩）
+    unsigned short biPlanes;     // 颜色平面数，必须�?1
+    unsigned short biBitCount;   // 每像素位数（24位代表RGB�?
+    unsigned int biCompression;  // 压缩类型�?0表示不压缩）
     unsigned int biSizeImage;    // 图像数据大小
-    int biXPelsPerMeter;         // 水平分辨率
-    int biYPelsPerMeter;         // 垂直分辨率
+    int biXPelsPerMeter;         // 水平分辨�?
+    int biYPelsPerMeter;         // 垂直分辨�?
     unsigned int biClrUsed;      // 实际使用的颜色数
-    unsigned int biClrImportant; // 重要颜色数
+    unsigned int biClrImportant; // 重要颜色�?
 } BMPInfoHeader;
 
 #pragma pack(pop)
 
-// 将24位RGB转换为8位灰度
+// �?24位RGB转换�?8位灰�?
 void rgb_to_gray(unsigned char *input, unsigned char *output, int width, int height)
 {
     for (int i = 0; i < width * height; i++)
@@ -58,14 +58,14 @@ int transfer24BitFile(char *inputPath, char *outputPath)
         return 1;
     }
 
-    // 读取BMP文件头和信息头
+    // 读取BMP文件头和信息�?
     BMPFileHeader fileHeader;
     BMPInfoHeader infoHeader;
 
     fread(&fileHeader, sizeof(BMPFileHeader), 1, inputFile);
     fread(&infoHeader, sizeof(BMPInfoHeader), 1, inputFile);
 
-    // 获取图像的宽度和高度，并计算每行字节数
+    // 获取图像的宽度和高度，并计算每行字节�?
     int width = infoHeader.biWidth;
     int height = abs(infoHeader.biHeight);
     int inputPadding = (4 - (width * 3) % 4) % 4;
@@ -94,11 +94,11 @@ int transfer24BitFile(char *inputPath, char *outputPath)
     outputFileHeader.bfOffBits = sizeof(BMPFileHeader) + sizeof(BMPInfoHeader) + 256 * 4;
     outputFileHeader.bfSize = outputFileHeader.bfOffBits + outputInfoHeader.biSizeImage;
 
-    // 写入 BMP 文件头和信息头
+    // 写入 BMP 文件头和信息�?
     fwrite(&outputFileHeader, sizeof(BMPFileHeader), 1, outputFile);
     fwrite(&outputInfoHeader, sizeof(BMPInfoHeader), 1, outputFile);
 
-    // 写入灰度调色板
+    // 写入灰度调色�?
     unsigned char colorTable[256 * 4];
     for (int i = 0; i < 256; i++)
     {
@@ -130,7 +130,7 @@ int transfer24BitFile(char *inputPath, char *outputPath)
     free(grayImage);
     fclose(outputFile);
 
-    printf("转换成功，灰度图保存为 output.bmp\n");
+    printf("ͼ��ɹ����浽 output.bmp\n");
     return 0;
 }
 

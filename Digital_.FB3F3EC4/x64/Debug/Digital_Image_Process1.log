@@ -1,0 +1,5 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(1119,5): warning MSB8027: 名为 index.c 的两个或更多文件将生成到同一位置的输出。这会导致错误的生成结果。   调用的文件是 index.c, lab1\index.c, lab2\index.c。
+Digital_.FB3F3EC4\x64\Debug\index.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+Digital_.FB3F3EC4\x64\Debug\index.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+index2.obj : error LNK2005: main 已经在 index.obj 中定义
+D:\Digital_Image_Process\x64\Debug\Digital_Image_Process1.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
